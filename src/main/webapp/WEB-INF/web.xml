@@ -1,0 +1,57 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>IniciarSesionServlet</servlet-name>
+  	<display-name>IniciarSesionServlet</display-name>
+  	<description></description>
+  	<servlet-class>controlador.IniciarSesionServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RegistrateServlet</servlet-name>
+  	<display-name>RegistrateServlet</display-name>
+  	<description></description>
+  	<servlet-class>controlador.RegistrateServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EliminiarServlet</servlet-name>
+  	<display-name>EliminiarServlet</display-name>
+  	<description></description>
+  	<servlet-class>controlador.EliminiarServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EditarServlet</servlet-name>
+  	<display-name>EditarServlet</display-name>
+  	<description></description>
+  	<servlet-class>controlador.EditarServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FormControlador</servlet-name>
+  	<display-name>FormControlador</display-name>
+  	<description></description>
+  	<servlet-class>controlador.FormControlador</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>IniciarSesionServlet</servlet-name>
+  	<url-pattern>/IniciarSesionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RegistrateServlet</servlet-name>
+  	<url-pattern>/RegistrateServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EliminiarServlet</servlet-name>
+  	<url-pattern>/EliminiarServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditarServlet</servlet-name>
+  	<url-pattern>/EditarServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FormControlador</servlet-name>
+  	<url-pattern>/FormControlador</url-pattern>
+  </servlet-mapping>
+</web-app>
