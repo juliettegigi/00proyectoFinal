@@ -2,10 +2,6 @@ package controlador;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -57,9 +53,9 @@ public class FormControlador extends HttpServlet {
 			String descripcion=request.getParameter("descripcion");
 			descripcion=descripcion.replace("\n", "<br>");
 			Date fecha=Constantes.StringFecha(request.getParameter("fecha"),Constantes.f1);
-			if(isExtension(part.getSubmittedFileName(), extens)) {			
+			if(Constantes.isExtension(part.getSubmittedFileName(), extens)) {			
 				
-					String photo=saveFile(part,uploads);			
+					String photo=Constantes.saveFile(part,uploads);			
 					
 					 cerro=new Cerro(0,u.getUsuario(),titulo,photo,descripcion,fecha);
 					CerrosDAO.insertar(cerro);
@@ -74,36 +70,8 @@ public class FormControlador extends HttpServlet {
 	
 
 
-	private String saveFile(Part part,File pathUploads){// recibe un File(ruta)
-		String fileName="";
-	try{  
-	  Path path=Paths.get(part.getSubmittedFileName());//nombre del archivo q suben
-	  //pero part,getsub... ya retorna el nombre del archivo, ej: 3.jpg
-	  fileName=path.getFileName().toString(); // el nombre del archivo q suben
-	InputStream input=part.getInputStream();// el input va atener la imagen
 
-	if(input!=null){
-	File file=new File(pathUploads, fileName); //
-	Files.copy(input,file.toPath());
-	}
-	}catch(Exception e){
-	  e.printStackTrace();
-	}
-	
-	//return (srcImg+fileName);//file name es... el nombre del archivo que suben 
-	return(fileName);
-	}
-	
-	private boolean isExtension(String fileName, String[] extensions) {
-		for(String et : extensions) {
-			if(fileName.toLowerCase().endsWith(et)) {
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
+
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import baseDatos.CerrosDAO;
+import interfaces.Constantes;
 
 /**
  * Servlet implementation class EditarServlet
@@ -47,9 +48,9 @@ public class EditarServlet extends HttpServlet {
 		
 		Part part = request.getPart("file");
 		if(!(part==null)) {
-			if(isExtension(part.getSubmittedFileName(), extens)) {			
+			if(Constantes.isExtension(part.getSubmittedFileName(), extens)) {			
 				
-				String photo=saveFile(part,uploads);			
+				String photo=Constantes.saveFile(part,uploads);			
 				CerrosDAO.update("img", photo, id);
 				
 				}
@@ -77,34 +78,8 @@ public class EditarServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	private String saveFile(Part part,File pathUploads){
-		String fileName="";
-	try{
-	  Path path=Paths.get(part.getSubmittedFileName());
-	  fileName=path.getFileName().toString();
-	  System.out.println(fileName);
-	InputStream input=part.getInputStream();
-
-	if(input!=null){
-	File file=new File(pathUploads, fileName);
-	Files.copy(input,file.toPath());
-	}
-	}catch(Exception e){
-	  e.printStackTrace();
-	}
 	
-	return (srcImg+fileName);
-	}
 	
-	private boolean isExtension(String fileName, String[] extensions) {
-		for(String et : extensions) {
-			if(fileName.toLowerCase().endsWith(et)) {
-				return true;
-			}
-		}
-		
-		return false;
-	}
 	
 
 }

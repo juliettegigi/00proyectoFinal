@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
+<%@ page import ="interfaces.Constantes"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +48,7 @@ session.setAttribute("descripcion",des.replace("\n","<br"));
 
 <div class="input-group mb-3">
     <h5>Imagen actual</h5>
-    <img src=<%=request.getParameter("imagen") %> >
+    <img src=<%=Constantes.SRC_IMG +request.getParameter("imagen") %> >
   <label class="input-group-text" for="inputGroupFile01">Upload</label>
   <input type="file" class="form-control" id="inputGroupFile01"  name="file">
 </div>

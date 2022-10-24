@@ -11,6 +11,8 @@
 <%@ page import ="java.util.Enumeration"%>
 <%@ page import ="java.util.HashMap"%>
 <%@ page import ="java.util.Map"%>
+<%@ page import=" java.util.Comparator"%>
+<%@page import="java.util.Collections" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,8 +125,10 @@ while (parameterNames.hasMoreElements()) {
      <%
        
            
-          if(l!=null){
-               for(int i=l.size()-1;i>=0;i--){
+          if(l!=null){ 
+        	  Comparator<Cerro> porFecha=(Cerro c1,Cerro c2)->c1.getFechaSubida().compareTo(c2.getFechaSubida());
+              Collections.sort(l,porFecha); 
+        	  for(int i=l.size()-1;i>=0;i--){
              	  Cerro c=l.get(i);
      %>        <div class="card ">
                    <%out.print("<span id=\"a"+ c.getId() +"\"></span>");%>
@@ -139,7 +143,7 @@ while (parameterNames.hasMoreElements()) {
 	                     <a href="home.jsp?id=<%=c.getId()%>"  >
 	                        <% out.print("<button type=\"button\" class=\"btn btn-danger\"  name=\"idEliminar\"  value=\""+  c.getId()  +"\""+" action=\"EliminarServlet\" >Eliminar</button>");%>
 	                     </a>
-	                     <%String descripcion=c.getDescripcion().replace( "<br>","\n"); %>
+	                     <%String descripcion=c.getDescripcion().replace( "<br>","99988877712"); %>
 	                    <a href="editar.jsp?id=<%=c.getId()%>&titulo=<%=c.getTitulo() %>&imagen=<%=c.getImg() %>&descripcion=<%=descripcion %>&fecha=<%=Constantes.FechaString(c.getFechaSubida(),Constantes.f2) %>"  >
 	                         <button type="button" class="btn btn-success">Editar</button>
 	                   </a>
